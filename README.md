@@ -118,3 +118,28 @@ Developed as a personal experiment in offline AI applications on Android.
 ## License
 
 MIT License
+
+## Architecture
+
+```mermaid
+graph TD
+
+A[Microphone Input]
+B[AudioRecord PCM]
+C[WAV Conversion]
+D[whisper.cpp Speech Recognition]
+E[Transcript Text]
+F[llama.cpp + HACHI-Summary]
+G[Meeting Summary]
+H[Android UI]
+
+A --> B
+B --> C
+C --> D
+D --> E
+E --> F
+F --> G
+G --> H
+```
+
+All processing runs **fully offline on the Android device**.
