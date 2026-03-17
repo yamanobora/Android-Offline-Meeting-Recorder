@@ -1,125 +1,199 @@
-# Android-Offline-Meeting-Recorder
+# Android Offline AI Meeting Recorder
 
-An experimental Android application that records audio, performs speech recognition **offline**, and generates summaries using a local LLM.
+An experimental Android application that performs **fully offline speech recognition and LLM-based meeting summarization on-device**.
 
-This project demonstrates how to run **fully offline AI processing on Android devices** using native libraries.
+**No cloud. No API. Everything runs locally.**
 
-## Features
+---
+
+## 🚀 Features
 
 * 🎤 Audio recording on Android
-* 🗣 Offline speech recognition
+* 🗣 Fully offline speech recognition (Whisper)
 * 📝 Automatic meeting transcription
-* 🤖 Local AI summarization
-* 🔒 Fully offline (no cloud API required)
+* 🤖 On-device LLM summarization
+* 🔒 Privacy-first (no data leaves the device)
 
-## Architecture
+---
 
-The processing pipeline is:
+## 🎯 Who is this for?
+
+This project is useful for:
+
+* Developers interested in **on-device AI**
+* Engineers working with **whisper.cpp / llama.cpp**
+* People exploring **privacy-first applications**
+* Anyone building **offline-capable mobile apps**
+
+---
+
+## 🏗 Architecture
+
+Processing pipeline:
 
 AudioRecord
 ↓
-PCM audio file
+PCM audio
 ↓
 WAV conversion
 ↓
-Speech recognition (whisper.cpp)
+Speech recognition (**whisper.cpp**)
 ↓
-Transcribed text
+Transcript text
 ↓
-Text summarization (llama.cpp + HACHI-Summary)
+Summarization (**llama.cpp + HACHI-Summary**)
 ↓
 Summary output
 
-## Technologies
+---
+
+## 🧠 Technologies
 
 * Android (Kotlin)
 * JNI (C++)
 * Native inference engines
 
-Libraries used:
+Libraries:
 
 * whisper.cpp
 * llama.cpp
 
-## AI Models
+---
 
-This repository **does not include model files** because they are too large for GitHub.
+## 🤖 Model Setup
 
-You need to download them separately.
+This repository **does not include model files** due to size limitations.
 
-Example models:
+Please download them manually:
 
-Whisper model
-Place in:
+### Whisper model
 
-app/src/main/assets/models/
+From: https://github.com/ggerganov/whisper.cpp
 
-Example file:
+Example:
 
+```
 ggml-base.bin
+```
 
-LLM summary model example:
+### LLM model (example)
 
-HACHI-Summary-Ja-sarashina2.2-0.5b-instruct
+From: https://huggingface.co/
 
-## Build Instructions
+Example:
 
-1. Clone the repository
+```
+HACHI-Summary-Ja-sarashina2.2-0.5b-instruct.gguf
+```
 
-2. Open the project in Android Studio
+### Placement
+
+```
+app/src/main/assets/models/
+```
+
+---
+
+## ⚙️ Build Instructions
+
+1. Clone this repository
+
+```
+git clone https://github.com/YOUR_USERNAME/Android-Offline-Meeting-Recorder.git
+```
+
+2. Open in Android Studio
 
 3. Download required AI models
 
-4. Place the models in:
+4. Place models in:
 
+```
 app/src/main/assets/models/
+```
 
-5. Build the project
+5. Build and run
 
-## Project Structure
+---
 
-app/
-Android application code
+## 📊 Performance (Example)
 
-lib/
-Native library wrapper
+Device: Pixel 7
 
-gradle/
-Gradle configuration
+* 10 sec audio → transcription: ~X sec
+* Summarization: ~X sec
 
-## Why This Project Exists
+(*Performance varies depending on model size and device*)
 
-Many speech-to-text and summarization tools rely on cloud APIs.
+---
+
+## 📱 Screenshots
+
+*(Add screenshots here)*
+
+---
+
+## 📈 Future Improvements
+
+* Real-time transcription
+* Faster inference (NNAPI / GPU)
+* Streaming audio processing
+* UI/UX improvements
+
+---
+
+## 💡 Why This Project Exists
+
+Most speech recognition and summarization tools rely on cloud APIs.
 
 This project explores a different approach:
 
-Running **speech recognition and LLM summarization directly on a smartphone**.
+> Running **speech recognition and LLMs entirely on-device**
 
-This enables:
+Benefits:
 
-* offline meetings
-* privacy-friendly processing
-* edge AI experimentation
+* Works offline
+* Strong privacy guarantees
+* No API costs
+* Edge AI experimentation
 
-## Status
+---
 
-Experimental / Work in progress.
+## 📂 Project Structure
 
-The project is being actively developed while exploring improvements in:
+```
+app/        # Android application
+lib/        # Native bridge / JNI
+gradle/     # Build configuration
+```
 
-* inference speed
+---
+
+## 📉 Status
+
+🚧 Experimental / Work in progress
+
+Actively exploring:
+
+* inference speed optimization
 * summarization quality
-* real-time transcription
+* real-time processing
 
-## Author
+---
 
-Developed as a personal experiment in offline AI applications on Android.
+## 👤 Author
 
-## License
+Personal project focused on **offline AI on Android**.
+
+---
+
+## 📄 License
 
 MIT License
 
-## Architecture
+---
+
+## 🧩 System Diagram
 
 ```mermaid
 graph TD
@@ -127,10 +201,10 @@ graph TD
 A[Microphone Input]
 B[AudioRecord PCM]
 C[WAV Conversion]
-D[whisper.cpp Speech Recognition]
-E[Transcript Text]
-F[llama.cpp + HACHI-Summary]
-G[Meeting Summary]
+D[whisper.cpp]
+E[Transcript]
+F[llama.cpp + HACHI]
+G[Summary]
 H[Android UI]
 
 A --> B
@@ -142,4 +216,6 @@ F --> G
 G --> H
 ```
 
-All processing runs **fully offline on the Android device**.
+---
+
+**All processing runs fully offline on the Android device.**
