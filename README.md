@@ -129,7 +129,20 @@ Device: Pixel 7
 
 ## 📱 Screenshots
 
-*(Add screenshots here)*
+### 🎤 Recording
+![Recording](screenshots/sample_01.png)
+
+### 🗣 Speech Recognition (Whisper)
+![Whisper](screenshots/sample_02.png)
+
+### 📝 Full Transcription
+![Transcription](screenshots/sample_03.png)
+
+### 🤖 AI Summarization (Processing)
+![Summarizing](screenshots/sample_04.png)
+
+### 📄 Summary Result
+![Summary](screenshots/sample_05.png)
 
 ---
 
